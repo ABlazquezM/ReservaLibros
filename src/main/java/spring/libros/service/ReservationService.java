@@ -6,7 +6,7 @@ import spring.libros.model.BookDTO;
 
 public interface ReservationService {
 
-	BookDTO reserveBook(Long bookId, Long userId);
+	void reserveBook(Long bookId, Long userId);
 
 	BookDTO cancelReservation(Long bookId, Long userId);
 

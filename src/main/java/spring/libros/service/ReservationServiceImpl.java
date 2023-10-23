@@ -1,7 +1,9 @@
 package spring.libros.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import spring.libros.model.BookDTO;
@@ -10,20 +12,31 @@ import spring.libros.model.UserDTO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
-
+	@Autowired
+	BookServiceImpl libro;
+	@Autowired
+	UserServiceImpl user;
 	
-	ArrayList<UserDTO> userList = new ArrayList<>();
+	static Long contador = 0L;
+	
 	ArrayList<ReservationDTO> reservationList = new ArrayList<>();
 
 	@Override
-	public BookDTO reserveBook(Long bookId, Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void reserveBook(Long bookId, Long userId) {
+		libro.libroReservado(bookId);
+		user.buscarUser(userId);
+		ReservationDTO u = new ReservationDTO(contador,bookId,userId);
+		reservationList.add(u);
 	}
 
 	@Override
 	public BookDTO cancelReservation(Long bookId, Long userId) {
-		// TODO Auto-generated method stub
+		for (ReservationDTO r : reservationList) {
+			if (r.getLibroId()==userId) {
+				
+			}
+			
+		}
 		return null;
 	}
 

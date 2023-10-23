@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
 		for (BookDTO b : bookList) {
 			if (id == b.getId()) {
 				b.setReservado(true);
-				return "Se ha reservado el Libro " + b.getTitulo();
+				return b.getTitulo();
 			}
 
 		}
